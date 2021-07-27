@@ -1,6 +1,6 @@
 # Analyze EGG signals
 
-This repo contains some scripts which analyze EGG signals and calculate the common EGG parameters in batch.
+This repo contains some scripts which analyze EGG signals and calculate the common EGG measurements in batch.
 
 The scripts do the following things:
 
