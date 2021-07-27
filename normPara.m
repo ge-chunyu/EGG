@@ -1,4 +1,4 @@
-function [normTime, nFoc, nFov, nCqc, nSqc, nCqh, nPic] = normPara(startTime, endTime, nPoint, cycle, fo_c, fo_v, cq_c, sq_c, cq_h, pic)
+function [normTime, nFoc, nFov, nCqc, nSqc, nCqh, nPic, nSqh] = normPara(startTime, endTime, nPoint, cycle, fo_c, fo_v, cq_c, sq_c, cq_h, pic, sq_h)
 % normalize parameters by finding the nearest parameter to the normalizing
 % point
 % input:
@@ -21,6 +21,7 @@ nCqc = zeros(nPoint, 1);
 nSqc = zeros(nPoint, 1);
 nCqh = zeros(nPoint, 1);
 nPic = zeros(nPoint, 1);
+nSqh = zeros(nPoint, 1);
 
 for i = 1:nPoint
     [~, minx] = min(abs(cycle - normTime(i)));
@@ -30,5 +31,6 @@ for i = 1:nPoint
     nSqc(i) = sq_c(minx);
     nCqh(i) = cq_h(minx);
     nPic(i) = pic(minx);
+    nSqh(i) = sq_h(minx);
 end
 end
