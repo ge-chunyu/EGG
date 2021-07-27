@@ -1,17 +1,17 @@
 function analyzeEGG()
-    %path = uigetdir(cd, "Choose folder");
-    speaker = "F20";
-    path = "/Users/Chunyu/Desktop/suzhou/egg/";
-    path = strcat(path, speaker);
-    path = strcat(path, filesep);
+    path = uigetdir(cd, "Choose EGG folder");
+    %speaker = "F20";
+    %path = "/Users/Chunyu/Desktop/suzhou/egg/";
+    %path = strcat(path, speaker);
+    %path = strcat(path, filesep);
     files = dir(strcat(path, "*.wav"));
     fileNum = length(files);
 
-    %labelPath = uigetdir(cd, "Choose TextGrid folder");
-    labelPath = "/Users/chunyu/Desktop/suzhou/";
-    labelPath = strcat(labelPath, speaker);
-    labelPath = strcat(labelPath, filesep);
-    labelFiles = dir(strcat(labelPath, "*.TextGrid"));
+    labelPath = uigetdir(cd, "Choose TextGrid folder");
+    %labelPath = "/Users/chunyu/Desktop/suzhou/";
+    %labelPath = strcat(labelPath, speaker);
+    %labelPath = strcat(labelPath, filesep);
+    %labelFiles = dir(strcat(labelPath, "*.TextGrid"));
 
     % specify coefficients
     ampfloor = 0.1;
