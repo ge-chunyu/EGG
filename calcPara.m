@@ -1,4 +1,4 @@
-function [cycle, dEGGpks, fo_c, fo_v, cq_c, sq_c, cq_h] = calcPara(Fs, dpeakidx, maxContact, opening, digit)
+function [cycle, dEGGpks, fo_c, fo_v, cq_c, sq_c, cq_h, sq_h] = calcPara(Fs, dpeakidx, maxContact, opening, noContact, digit)
 % calculate F0, CQ and SQ based on the marked landmarks
 % input:
 % - Fs: sampling frequency
@@ -20,12 +20,16 @@ ndEGGpeaks = length(dpeakidx) - 1;
 fo_v = zeros(ndEGGpeaks, 1); % fo using dEGG peak
 %cq_v = zeros(ndEGGpeaks, 1); % cq using dEGG positive peak and negative peak
 cq_h = zeros(ndEGGpeaks, 1); % cq using hybrid
-%sq_v = zeros(ndEGGpeaks, 1); % sq using dEGG peak
+sq_h = zeros(ndEGGpeaks, 1); % sq using hybrid
 dEGGpks = zeros(ndEGGpeaks, 1); % the time of dEGG pks
 
 for j = 2:length(dpeakidx)
     fo_v(j-1) = round(Fs/(dpeakidx(j)-dpeakidx(j-1)), digit);
     cq_h(j-1) = round((opening{j-1, 1}-dpeakidx(j-1))/(dpeakidx(j)-dpeakidx(j-1)), digit);
     dEGGpks(j-1) = dpeakidx(j-1) / Fs;
+end
+
+for j = 3:length(dpeakidx)
+   sq_h(j-2) = round((maxContact{j-2, 2}-noContact{j-2, 2})/(noContact{j-1, 1}-maxContact{j-1, 1}), digit);
 end
 end
