@@ -18,7 +18,7 @@ for i = 2:length(peakidx)
     [~, crRIdx] = min(abs(cycle(minIdx:length(cycle)) - idealThreshR));
     crLIdx = crLIdx-1;
     crRIdx = crRIdx+minIdx-1;
-    threshArray{i, 1} = peakidx(i-1) + crLIdx;
-    threshArray{i, 2} = peakidx(i-1) + crRIdx;
+    threshArray{i-1, 1} = peakidx(i-1) + crLIdx;
+    threshArray{i-1, 2} = peakidx(i-1) + crRIdx;
 end
 end
